@@ -12,11 +12,13 @@
         }
 
         body {
-            font-family: 'Courier New', monospace;
-            background: #1a1a2e;
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: #fff;
             overflow: hidden;
         }
+
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
         #game-container {
             width: 100vw;
@@ -26,7 +28,7 @@
 
         #canvas {
             display: block;
-            background: #16213e;
+            background: #0f0f23;
         }
 
         #ui-overlay {
@@ -42,40 +44,52 @@
             position: absolute;
             top: 10px;
             left: 10px;
-            background: rgba(0, 0, 0, 0.7);
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(20, 20, 40, 0.9));
             padding: 15px;
             border-radius: 8px;
-            border: 2px solid #e94560;
+            border: 3px solid #e94560;
+            box-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
         }
 
         .stat {
-            margin: 5px 0;
-            font-size: 16px;
+            margin: 8px 0;
+            font-size: 14px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
 
         .health-bar {
             width: 200px;
-            height: 20px;
-            background: #333;
-            border-radius: 10px;
+            height: 25px;
+            background: linear-gradient(180deg, #2a2a2a, #1a1a1a);
+            border-radius: 12px;
             overflow: hidden;
             margin-top: 5px;
+            border: 2px solid #444;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
         }
 
         #health-fill {
             height: 100%;
-            background: linear-gradient(90deg, #e94560, #ff6b6b);
+            background: linear-gradient(90deg, #ff0000, #ff6b6b, #ff0000);
+            background-size: 200% 100%;
+            animation: healthPulse 2s infinite;
             transition: width 0.3s;
+        }
+
+        @keyframes healthPulse {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         #level-indicator {
             position: absolute;
             top: 10px;
             right: 10px;
-            background: rgba(0, 0, 0, 0.7);
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(20, 20, 40, 0.9));
             padding: 15px;
             border-radius: 8px;
-            border: 2px solid #0f3460;
+            border: 3px solid #00d9ff;
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
             text-align: center;
         }
 
@@ -85,7 +99,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: radial-gradient(ellipse at center, rgba(20, 20, 40, 0.95) 0%, rgba(0, 0, 0, 0.98) 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -99,52 +113,71 @@
         }
 
         h1 {
-            font-size: 48px;
-            color: #e94560;
+            font-size: 42px;
+            background: linear-gradient(45deg, #e94560, #ff6b6b, #ffe66d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 20px;
-            text-shadow: 0 0 20px #e94560;
+            text-shadow: 0 0 30px rgba(233, 69, 96, 0.8);
+            animation: titleGlow 2s infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
         }
 
         h2 {
-            font-size: 36px;
-            color: #0f3460;
+            font-size: 28px;
+            color: #00d9ff;
             margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(0, 217, 255, 0.8);
         }
 
         button {
-            background: #e94560;
+            background: linear-gradient(135deg, #e94560, #ff6b6b);
             color: white;
             border: none;
-            padding: 15px 40px;
-            font-size: 20px;
+            padding: 18px 50px;
+            font-size: 18px;
             cursor: pointer;
-            border-radius: 8px;
+            border-radius: 12px;
             margin: 10px;
-            transition: transform 0.2s;
-            font-family: 'Courier New', monospace;
+            transition: all 0.3s;
+            font-family: 'Press Start 2P', 'Courier New', monospace;
+            box-shadow: 0 5px 20px rgba(233, 69, 96, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         button:hover {
-            transform: scale(1.1);
-            background: #ff6b6b;
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 8px 30px rgba(233, 69, 96, 0.8);
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
         }
 
         .instructions {
-            max-width: 600px;
+            max-width: 700px;
             text-align: center;
             margin: 20px;
-            line-height: 1.6;
+            line-height: 2;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #333;
         }
 
         #minimap {
             position: absolute;
             bottom: 10px;
             right: 10px;
-            width: 150px;
-            height: 150px;
-            background: rgba(0, 0, 0, 0.7);
-            border: 2px solid #0f3460;
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(20, 20, 40, 0.9));
+            border: 3px solid #00d9ff;
             border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
         }
 
         .enemy-type {
@@ -153,6 +186,21 @@
             height: 20px;
             margin: 5px;
             border-radius: 50%;
+            box-shadow: 0 0 10px currentColor;
+        }
+
+        .damage-number {
+            position: absolute;
+            font-weight: bold;
+            font-size: 18px;
+            pointer-events: none;
+            animation: floatUp 1s forwards;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        @keyframes floatUp {
+            0% { opacity: 1; transform: translateY(0) scale(1); }
+            100% { opacity: 0; transform: translateY(-50px) scale(1.5); }
         }
     </style>
 </head>
@@ -249,14 +297,31 @@
         const keys = {};
         const mouse = { x: 0, y: 0 };
 
-        // Tipos de enemigos
+        // Tipos de enemigos con sprites pixel art
         const enemyTypes = [
-            { color: '#ff6b6b', speed: 2, health: 1, size: 15, score: 10 },
-            { color: '#4ecdc4', speed: 3, health: 2, size: 18, score: 20 },
-            { color: '#ffe66d', speed: 1.5, health: 3, size: 25, score: 30 },
-            { color: '#95e1d3', speed: 4, health: 1, size: 12, score: 15 },
-            { color: '#f38181', speed: 2.5, health: 5, size: 30, score: 50 }
+            { color: '#ff6b6b', speed: 2, health: 1, size: 15, score: 10, name: 'Slime' },
+            { color: '#4ecdc4', speed: 3, health: 2, size: 18, score: 20, name: 'Ghost' },
+            { color: '#ffe66d', speed: 1.5, health: 3, size: 25, score: 30, name: 'Demon' },
+            { color: '#95e1d3', speed: 4, health: 1, size: 12, score: 15, name: 'Bat' },
+            { color: '#f38181', speed: 2.5, health: 5, size: 30, score: 50, name: 'Boss' }
         ];
+
+        // Números flotantes de daño
+        let damageNumbers = [];
+
+        function showDamageNumber(x, y, damage) {
+            const damageEl = document.createElement('div');
+            damageEl.className = 'damage-number';
+            damageEl.textContent = '-' + damage;
+            damageEl.style.left = x + 'px';
+            damageEl.style.top = y + 'px';
+            damageEl.style.color = '#ff0000';
+            document.getElementById('game-container').appendChild(damageEl);
+            
+            setTimeout(() => {
+                damageEl.remove();
+            }, 1000);
+        }
 
         // Event Listeners
         window.addEventListener('keydown', (e) => {
@@ -453,9 +518,9 @@
             ctx.fillStyle = 'rgba(22, 33, 62, 0.3)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            // Dibujar grid de fondo
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
-            ctx.lineWidth = 1;
+            // Dibujar grid de fondo con efecto neón
+            ctx.strokeStyle = 'rgba(0, 217, 255, 0.1)';
+            ctx.lineWidth = 2;
             const gridSize = 50;
             for (let x = 0; x < canvas.width; x += gridSize) {
                 ctx.beginPath();
@@ -470,6 +535,21 @@
                 ctx.stroke();
             }
 
+            // Partículas de fondo animadas
+            if (Math.random() < 0.1) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: -10,
+                    velocity: {
+                        x: (Math.random() - 0.5) * 2,
+                        y: Math.random() * 3 + 1
+                    },
+                    radius: Math.random() * 2 + 1,
+                    color: `hsl(${Math.random() * 360}, 70%, 60%)`,
+                    alpha: 0.5
+                });
+            }
+
             // Mover jugador
             if (keys['w'] || keys['arrowup']) player.y -= player.speed;
             if (keys['s'] || keys['arrowdown']) player.y += player.speed;
@@ -480,7 +560,7 @@
             player.x = Math.max(player.radius, Math.min(canvas.width - player.radius, player.x));
             player.y = Math.max(player.radius, Math.min(canvas.height - player.radius, player.y));
 
-            // Dibujar jugador
+            // Dibujar jugador con diseño mejorado
             ctx.fillStyle = player.color;
             ctx.beginPath();
             ctx.arc(player.x, player.y, player.radius, 0, Math.PI * 2);
@@ -491,6 +571,19 @@
             ctx.shadowBlur = 20;
             ctx.fill();
             ctx.shadowBlur = 0;
+
+            // Ojos del jugador (pixel art style)
+            ctx.fillStyle = '#fff';
+            ctx.beginPath();
+            ctx.arc(player.x - 8, player.y - 5, 6, 0, Math.PI * 2);
+            ctx.arc(player.x + 8, player.y - 5, 6, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = '#000';
+            ctx.beginPath();
+            ctx.arc(player.x - 6, player.y - 5, 3, 0, Math.PI * 2);
+            ctx.arc(player.x + 10, player.y - 5, 3, 0, Math.PI * 2);
+            ctx.fill();
 
             // Actualizar balas
             bullets.forEach((bullet, index) => {
@@ -516,18 +609,37 @@
                 enemy.x += Math.cos(angle) * enemy.speed;
                 enemy.y += Math.sin(angle) * enemy.speed;
 
-                // Dibujar enemigo
+                // Dibujar enemigo con diseño mejorado
                 ctx.fillStyle = enemy.color;
                 ctx.beginPath();
                 ctx.arc(enemy.x, enemy.y, enemy.radius, 0, Math.PI * 2);
                 ctx.fill();
 
-                // Ojos del enemigo
-                ctx.fillStyle = '#000';
-                ctx.beginPath();
-                ctx.arc(enemy.x - enemy.radius/3, enemy.y - enemy.radius/3, enemy.radius/4, 0, Math.PI * 2);
-                ctx.arc(enemy.x + enemy.radius/3, enemy.y - enemy.radius/3, enemy.radius/4, 0, Math.PI * 2);
+                // Brillo del enemigo
+                ctx.shadowColor = enemy.color;
+                ctx.shadowBlur = 15;
                 ctx.fill();
+                ctx.shadowBlur = 0;
+
+                // Ojos del enemigo (pixel art style)
+                ctx.fillStyle = '#fff';
+                ctx.beginPath();
+                ctx.arc(enemy.x - enemy.radius/3, enemy.y - enemy.radius/4, enemy.radius/3.5, 0, Math.PI * 2);
+                ctx.arc(enemy.x + enemy.radius/3, enemy.y - enemy.radius/4, enemy.radius/3.5, 0, Math.PI * 2);
+                ctx.fill();
+                
+                ctx.fillStyle = '#ff0000';
+                ctx.beginPath();
+                ctx.arc(enemy.x - enemy.radius/3, enemy.y - enemy.radius/4, enemy.radius/6, 0, Math.PI * 2);
+                ctx.arc(enemy.x + enemy.radius/3, enemy.y - enemy.radius/4, enemy.radius/6, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Boca del enemigo
+                ctx.strokeStyle = '#000';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.arc(enemy.x, enemy.y + enemy.radius/4, enemy.radius/4, 0, Math.PI);
+                ctx.stroke();
 
                 // Colisión con jugador
                 const distToPlayer = Math.hypot(player.x - enemy.x, player.y - enemy.y);
@@ -549,6 +661,7 @@
                         enemy.health--;
                         bullets.splice(bIndex, 1);
                         createExplosion(bullet.x, bullet.y, bullet.color, 3);
+                        showDamageNumber(enemy.x, enemy.y - 20, 1);
 
                         if (enemy.health <= 0) {
                             score += enemy.score;
