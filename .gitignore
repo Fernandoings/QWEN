@@ -1,1 +1,18 @@
-Nothing needs to be added to .gitignore since only a single HTML file (`realm_clone.html`) was added, which is a source file that should be tracked in version control.
+```
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Database
+pos_app/pos_inventory.db
+
+# Logs
+server.log
+
+# Environment
+.env
+.env.local
+*.env.*
+```
