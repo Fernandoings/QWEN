@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pastelería Jacinta - Tortas Artesanales</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-coral: #F4A398;
+            --secondary-coral: #E67E70;
+            --text-dark: #2C2C2C;
+            --bg-light: #FAFAFA;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* Navegación Sticky */
+        nav {
+            position: sticky;
+            top: 0;
+            background: linear-gradient(135deg, var(--primary-coral), var(--secondary-coral));
+            padding: 1rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-coral) 0%, var(--secondary-coral) 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* Secciones */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            color: var(--secondary-coral);
+            margin-bottom: 3rem;
+        }
+
+        /* Grid de Productos */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary-coral), var(--secondary-coral));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: var(--secondary-coral);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-description {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .product-sizes {
+            margin-bottom: 1rem;
+        }
+
+        .size-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.3rem 0;
+            border-bottom: 1px dashed #eee;
+            font-size: 0.9rem;
+        }
+
+        .size-item:last-child {
+            border-bottom: none;
+        }
+
+        .price {
+            color: var(--secondary-coral);
+            font-weight: 600;
+        }
+
+        /* Desayunos */
+        .breakfast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .breakfast-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .breakfast-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .breakfast-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .breakfast-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6rem;
+            color: var(--secondary-coral);
+            margin-bottom: 0.5rem;
+        }
+
+        .breakfast-items {
+            list-style: none;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .breakfast-items li {
+            padding: 0.2rem 0;
+        }
+
+        .breakfast-price {
+            font-size: 1.5rem;
+            color: var(--secondary-coral);
+            font-weight: 600;
+        }
+
+        /* Contacto */
+        .contact-section {
+            background: linear-gradient(135deg, var(--primary-coral), var(--secondary-coral));
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact-section .section-title {
+            color: var(--white);
+        }
+
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        .notice {
+            background: rgba(255,255,255,0.2);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            font-style: italic;
+        }
+
+        /* Botón WhatsApp */
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #25D366;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            transition: transform 0.3s, background 0.3s;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.05);
+            background: #20BA5A;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .products-grid,
+            .breakfast-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">🎂 Pastelería Jacinta</a>
+            <ul class="nav-links">
+                <li><a href="#tortas">Tortas</a></li>
+                <li><a href="#desayunos">Desayunos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Pastelería Jacinta</h1>
+        <p>Tortas artesanales hechas con amor para endulzar tus momentos especiales ✨</p>
+    </div>
+
+    <!-- Sección Tortas -->
+    <section id="tortas">
+        <h2 class="section-title">Nuestras Tortas</h2>
+        <div class="products-grid">
+            <!-- Torta 1 -->
+            <div class="product-card">
+                <div class="product-image">🎂</div>
+                <div class="product-info">
+                    <h3 class="product-name">Chocolate Intenso</h3>
+                    <p class="product-description">Bizcocho húmedo de chocolate con ganache de chocolate belga y decoración artesanal.</p>
+                    <div class="product-sizes">
+                        <div class="size-item">
+                            <span>Pequeña (6-8 porciones)</span>
+                            <span class="price">$25.000</span>
+                        </div>
+                        <div class="size-item">
+                            <span>Mediana (12-15 porciones)</span>
+                            <span class="price">$40.000</span>
+                        </div>
+                        <div class="size-item">
+                            <span>Grande (20-25 porciones)</span>
+                            <span class="price">$60.000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Torta 2 -->
+            <div class="product-card">
+                <div class="product-image">🍓</div>
+                <div class="product-info">
+                    <h3 class="product-name">Frutilla Cremosa</h3>
+                    <p class="product-description">Bizcocho de vainilla con crema chantilly y frutillas frescas de estación.</p>
+                    <div class="product-sizes">
+                        <div class="size-item">
+                            <span>Pequeña (6-8 porciones)</span>
+                            <span class="price">$28.000</span>
+                        </div>
+                        <div class="size-item">
+                            <span>Mediana (12-15 porciones)</span>
+                            <span class="price">$45.000</span>
+                        </div>
+                        <div class="size-item">
+                            <span>Grande (20-25 porciones)</span>
+                            <span class="price">$65.000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Torta 3 -->
+            <div class="product-card">
+                <div class="product-image">🧁</div>
+                <div class="product-info">
+                    <h3 class="product-name">Red Velvet</h3>
+                    <p class="product-description">Clásica torta roja aterciopelada con frosting de queso crema suave y delicado.</p>
+                    <div class="product-sizes">
+                        <div class="size-item">
+                            <span>Pequeña (6-8 porciones)</span>
+                            <span class="price">$30.000</span>
+                        </div>
+                        <div class="size-item">
+                            <span>Mediana (12-15 porciones)</span>
+                            <span class="price">$48.000</span>
+                        </div>
+                        <div class="size-item">
+                            <span>Grande (20-25 porciones)</span>
+                            <span class="price">$70.000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Torta 4 -->
+            <div class="product-card">
+                <div class="product-image">🍋</div>
+                <div class="product-info">
+                    <h3 class="product-name">Lemon Pie</h3>
+                    <p class="product-description">Base crujiente de galleta, cremoso relleno de limón y merengue italiano tostado.</p>
+                    <div class="product-sizes">
+                        <div class="size-item">
+                            <span>Pequeña (6-8 porciones)</span>
+                            <span class="price">$26.000</span>
+                        </div>
+                        <div class="size-item">
+                            <span>Mediana (12-15 porciones)</span>
+                            <span class="price">$42.000</span>
+                        </div>
+                        <div class="size-item">
+                            <span>Grande (20-25 porciones)</span>
+                            <span class="price">$62.000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Torta 5 -->
+            <div class="product-card">
+                <div class="product-image">☕</div>
+                <div class="product-info">
+                    <h3 class="product-name">Dulce de Leche</h3>
+                    <p class="product-description">Bizcocho de café con abundante dulce de leche repostero y cobertura de chocolate.</p>
+                    <div class="product-sizes">
+                        <div class="size-item">
+                            <span>Pequeña (6-8 porciones)</span>
+                            <span class="price">$27.000</span>
+                        </div>
+                        <div class="size-item">
+                            <span>Mediana (12-15 porciones)</span>
+                            <span class="price">$43.000</span>
+                        </div>
+                        <div class="size-item">
+                            <span>Grande (20-25 porciones)</span>
+                            <span class="price">$63.000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Torta 6 -->
+            <div class="product-card">
+                <div class="product-image">🌸</div>
+                <div class="product-info">
+                    <h3 class="product-name">Zanahoria Especial</h3>
+                    <p class="product-description">Carrot cake esponjosa con nueces, canela y frosting de queso crema con toques cítricos.</p>
+                    <div class="product-sizes">
+                        <div class="size-item">
+                            <span>Pequeña (6-8 porciones)</span>
+                            <span class="price">$28.000</span>
+                        </div>
+                        <div class="size-item">
+                            <span>Mediana (12-15 porciones)</span>
+                            <span class="price">$45.000</span>
+                        </div>
+                        <div class="size-item">
+                            <span>Grande (20-25 porciones)</span>
+                            <span class="price">$66.000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Desayunos -->
+    <section id="desayunos" style="background-color: #fff;">
+        <h2 class="section-title">Boxes de Desayuno</h2>
+        <div class="breakfast-grid">
+            <!-- Box 1 -->
+            <div class="breakfast-card">
+                <div class="breakfast-icon">🥐</div>
+                <h3 class="breakfast-name">Box Clásico</h3>
+                <ul class="breakfast-items">
+                    <li>2 Medialunas de manteca</li>
+                    <li>1 Tartaleta dulce</li>
+                    <li>1 Café o té</li>
+                    <li>Jugo de naranja</li>
+                </ul>
+                <div class="breakfast-price">$12.000</div>
+            </div>
+
+            <!-- Box 2 -->
+            <div class="breakfast-card">
+                <div class="breakfast-icon">🧇</div>
+                <h3 class="breakfast-name">Box Premium</h3>
+                <ul class="breakfast-items">
+                    <li>2 Pancakes con miel</li>
+                    <li>1 Porción de torta</li>
+                    <li>1 Café especial</li>
+                    <li>Frutas frescas</li>
+                </ul>
+                <div class="breakfast-price">$18.000</div>
+            </div>
+
+            <!-- Box 3 -->
+            <div class="breakfast-card">
+                <div class="breakfast-icon">🥯</div>
+                <h3 class="breakfast-name">Box Salado</h3>
+                <ul class="breakfast-items">
+                    <li>1 Sándwich gourmet</li>
+                    <li>1 Empanada</li>
+                    <li>1 Café o mate cocido</li>
+                    <li>Yogurt con granola</li>
+                </ul>
+                <div class="breakfast-price">$15.000</div>
+            </div>
+
+            <!-- Box 4 -->
+            <div class="breakfast-card">
+                <div class="breakfast-icon">🎁</div>
+                <h3 class="breakfast-name">Box Sorpresa</h3>
+                <ul class="breakfast-items">
+                    <li>Variedad de pastelitos</li>
+                    <li>1 Mini torta individual</li>
+                    <li>Bebida caliente premium</li>
+                    <li>Sorpresa del día</li>
+                </ul>
+                <div class="breakfast-price">$22.000</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="contact-section">
+        <h2 class="section-title">Contacto</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                📍 Dirección: Calle Dulzura 123, Ciudad
+            </div>
+            <div class="contact-item">
+                📞 Teléfono: +54 9 11 1234-5678
+            </div>
+            <div class="contact-item">
+                ✉️ Email: pedidos@pasteleriajacinta.com
+            </div>
+            <div class="contact-item">
+                🕐 Horario: Lun-Sáb 9:00 - 20:00
+            </div>
+
+            <div class="notice">
+                ⚠️ <strong>Importante:</strong> Todos los pedidos deben realizarse con 2-3 días de anticipación para garantizar la frescura y calidad de nuestros productos artesanales.
+            </div>
+
+            <a href="https://wa.me/5491112345678" class="whatsapp-btn" target="_blank">
+                💬 Pedir por WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Pastelería Jacinta - Hecho con ❤️ para endulzar tu vida</p>
+    </footer>
+</body>
+</html>

@@ -1,1 +1,1 @@
-Nothing needs to be added to .gitignore since only a single HTML file (`realm_clone.html`) was added, which is a source file that should be tracked in version control.
+Nothing should be ignored since only an HTML file was added and no build artifacts, dependencies, or temporary files were included in the changes.
