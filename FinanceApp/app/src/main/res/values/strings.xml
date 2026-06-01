@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FinanceApp</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_transactions">Transacciones</string>
+    <string name="title_budgets">Presupuestos</string>
+    <string name="title_analytics">Análisis</string>
+    <string name="title_settings">Configuración</string>
+    
+    <!-- Common strings -->
+    <string name="add_transaction">Agregar Transacción</string>
+    <string name="edit_transaction">Editar Transacción</string>
+    <string name="delete_transaction">Eliminar Transacción</string>
+    <string name="income">Ingreso</string>
+    <string name="expense">Gasto</string>
+    <string name="amount">Monto</string>
+    <string name="description">Descripción</string>
+    <string name="category">Categoría</string>
+    <string name="date">Fecha</string>
+    <string name="save">Guardar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="delete">Eliminar</string>
+    <string name="edit">Editar</string>
+    
+    <!-- Budget strings -->
+    <string name="add_budget">Agregar Presupuesto</string>
+    <string name="budget_name">Nombre del Presupuesto</string>
+    <string name="budget_limit">Límite del Presupuesto</string>
+    <string name="budget_period">Período</string>
+    <string name="budget_remaining">Restante</string>
+    <string name="budget_spent">Gastado</string>
+    
+    <!-- Account strings -->
+    <string name="add_account">Agregar Cuenta</string>
+    <string name="account_name">Nombre de la Cuenta</string>
+    <string name="account_type">Tipo de Cuenta</string>
+    <string name="account_balance">Balance Inicial</string>
+    
+    <!-- Settings strings -->
+    <string name="settings_currency">Moneda</string>
+    <string name="settings_notifications">Notificaciones</string>
+    <string name="settings_backup">Copia de Seguridad</string>
+    <string name="settings_export">Exportar Datos</string>
+    <string name="settings_import">Importar Datos</string>
+    <string name="settings_about">Acerca de</string>
+    <string name="settings_version">Versión</string>
+    
+    <!-- Messages -->
+    <string name="transaction_added">Transacción agregada exitosamente</string>
+    <string name="transaction_updated">Transacción actualizada exitosamente</string>
+    <string name="transaction_deleted">Transacción eliminada exitosamente</string>
+    <string name="budget_added">Presupuesto agregado exitosamente</string>
+    <string name="budget_updated">Presupuesto actualizado exitosamente</string>
+    <string name="budget_deleted">Presupuesto eliminado exitosamente</string>
+    <string name="no_transactions">No hay transacciones</string>
+    <string name="no_budgets">No hay presupuestos</string>
+</resources>
